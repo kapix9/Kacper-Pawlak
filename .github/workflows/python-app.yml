@@ -45,7 +45,7 @@ jobs:
         poetry run task lint
     - name: Task Formatte
       run:
-        poetry run task formatte
+        poetry run task formatter
     - name: Task Security
       run:
         poetry run task security
