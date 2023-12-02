@@ -33,5 +33,5 @@ jobs:
         installer-parallel: true
 
     - name: Install dependencies
-      run: |
+      run:
         poetry install --no-root
