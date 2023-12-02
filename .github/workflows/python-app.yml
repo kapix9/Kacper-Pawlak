@@ -31,9 +31,21 @@ jobs:
       with:
         virtualenvs-create: true 
         virtualenvs-in-project: false
-        virtualenvs-path: .venv
         installer-parallel: true
 
     - name: Install dependencies
       run:
         poetry install --no-root
+    
+    - name: Task test
+      run:
+        poetry run task test
+      name: Test lint
+      run:
+        poetry run task lint
+      name: Task Formatte
+      run:
+        poetry run task formatte
+      name: Task Security
+      run:
+        poetry run task security
