@@ -29,7 +29,7 @@ jobs:
       with:
         virtualenvs-create: true 
         virtualenvs-in-project: false
-        virtualenvs-path: {cache-dir}/virtualenvs
+        virtualenvs-path: .venv
         installer-parallel: true
 
     - name: Install dependencies
