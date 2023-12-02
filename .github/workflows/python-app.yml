@@ -27,12 +27,12 @@ jobs:
     - name: Install Poetry Action
       uses: snok/install-poetry@v1.3.4
       with:
-      version: 
-      virtualenvs-create:
-      virtualenvs-in-project: 
-      virtualenvs-path:
-      installer-parallel:
-      installation-arguments:  
+        version: 
+        virtualenvs-create:
+        virtualenvs-in-project: 
+        virtualenvs-path:
+        installer-parallel:
+        installation-arguments:  
 
     - name: Install dependencies
 
