@@ -38,15 +38,15 @@ jobs:
     
   jobs:
     test:
-      - name: Task test
-        run:
-          poetry run task test
-      - name: Test lint
-        run:
-          poetry run task lint
-      - name: Task Formatte
-        run:
-          poetry run task formatter
-      - name: Task Security
-        run:
-          poetry run task security
+    - name: Task test
+      run:
+        poetry run task test
+    - name: Test lint
+      run:
+        poetry run task lint
+    - name: Task Formatte
+      run:
+        poetry run task formatter
+    - name: Task Security
+      run:
+        poetry run task security
