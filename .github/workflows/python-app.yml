@@ -1,13 +1,13 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# This workflow installs Python dependencies, runs tests, and lints with a single version of Python
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
 name: Python application
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [main]
   pull_request:
-    branches: [ "main" ]
+    branches: [main]
 
 permissions:
   contents: read
@@ -19,54 +19,54 @@ jobs:
       run:
         working-directory: ./example-app
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.10"
-    - name: Install Poetry Action
-      uses: snok/install-poetry@v1.3.4
-      with:
-        virtualenvs-create: true 
-        virtualenvs-in-project: false
-        installer-parallel: true
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Install dependencies
-      run:
-        poetry install --no-root
-        
-      
-    - name: Task test
-      run:
-        poetry run task test
-        
-    lint:
-      runs-on: ubuntu-latest
-      needs: build 
-    - name: Test lint
-      run:
-        poetry run task lint
-        
-    formatter:
-      runs-on: ubuntu-latest
-      needs: build  
-    - name: Task Formatte
-      run:
-        poetry run task formatter
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
 
-    security:
-      runs-on: ubuntu-latest
-      needs: build       
-    - name: Task Security
-      run:
-        poetry run task security
+      - name: Install Poetry Action
+        uses: snok/install-poetry@v1.3.4
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: false
+          installer-parallel: true
 
-    unittests:
-      runs-on: ubuntu-latest
-      needs:
-        -lint
-        -formatter
-        -security
-    - name: Unit test
-      run:
-        poetry run pytest
+      - name: Install dependencies
+        run: poetry install --no-root
+
+      - name: Task test
+        run: poetry run task test
+
+  lint:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Test lint
+        run: poetry run task lint
+
+  formatter:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Task Formatter
+        run: poetry run task formatter
+
+  security:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Task Security
+        run: poetry run task security
+
+  unittests:
+    runs-on: ubuntu-latest
+    needs:
+      - lint
+      - formatter
+      - security
+    steps:
+      - name: Unit test
+        run: poetry run pytest
