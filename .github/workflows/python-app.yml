@@ -36,8 +36,6 @@ jobs:
       run:
         poetry install --no-root
     
-  jobs:
-    test:
     - name: Task test
       run:
         poetry run task test
