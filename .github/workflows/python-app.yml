@@ -37,4 +37,4 @@ jobs:
     - name: Install dependencies
 
       run:
-        Poetry install
+        Poetry install --no -root
