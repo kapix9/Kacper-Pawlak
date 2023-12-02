@@ -40,12 +40,12 @@ jobs:
     - name: Task test
       run:
         poetry run task test
-      name: Test lint
+    - name: Test lint
       run:
         poetry run task lint
-      name: Task Formatte
+    - name: Task Formatte
       run:
         poetry run task formatte
-      name: Task Security
+    - name: Task Security
       run:
         poetry run task security
