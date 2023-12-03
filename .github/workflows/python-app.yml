@@ -42,7 +42,12 @@ jobs:
             ~/.cache/pypoetry
             .venv
         key: poetry-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
-          
+      
+      - name: Install dependencies
+      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      run: |
+        poetry install --no-root  
+
 
       - name: Task test
         run: poetry run task test
