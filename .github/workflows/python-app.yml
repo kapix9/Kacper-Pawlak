@@ -37,7 +37,7 @@ jobs:
           path: |
             ~/.cache/pypoetry
             .venv
-        key: poetry-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+          key: poetry-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
       
       - name: Install dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
