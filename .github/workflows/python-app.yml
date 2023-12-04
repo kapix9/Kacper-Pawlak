@@ -14,12 +14,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
-
+        os: [ "ubuntu-latest", "windows-latest" ]
     defaults:
       run:
         working-directory: ./example-app
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -44,22 +42,19 @@ jobs:
       - name: Install dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: |
-          poetry install --no-root
-
+          poetry install --no-root  
       - name: Task test
         run: poetry run task test
 
   lint:
     runs-on: ${{ matrix.os }}
-    needs: build
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
-
+        os: [ "ubuntu-latest", "windows-latest" ]
+    needs: build
     defaults:
       run:
         working-directory: ./example-app
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -90,15 +85,13 @@ jobs:
 
   formatter:
     runs-on: ${{ matrix.os }}
-    needs: build
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
-
+        os: [ "ubuntu-latest", "windows-latest" ]
+    needs: build
     defaults:
       run:
         working-directory: ./example-app
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -129,15 +122,13 @@ jobs:
 
   security:
     runs-on: ${{ matrix.os }}
-    needs: build
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
-
+        os: [ "ubuntu-latest", "windows-latest" ]
+    needs: build
     defaults:
       run:
         working-directory: ./example-app
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -168,18 +159,16 @@ jobs:
 
   unittests:
     runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ "ubuntu-latest", "windows-latest" ]
     needs:
       - lint
       - formatter
       - security
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-
     defaults:
       run:
         working-directory: ./example-app
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
