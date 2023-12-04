@@ -210,3 +210,6 @@ jobs:
           export PATH="$HOME/.local/bin:$PATH"
 
       - name: Install Poetry
+        if: matrix.os == 'windows-latest'
+        run: |
+          (Invoke-WebRequest -Uri https://install.python
