@@ -36,7 +36,7 @@ jobs:
       - name: Install Poetry
         if: matrix.os == 'windows-latest'
         run: |
-          (Invoke-WebRequest -Uri https://install.python-poetry.org | Invoke-Expression).Close()
+          (Invoke-WebRequest -Uri https://install.python-poetry.org).Content | Invoke-Expression
           $env:PATH = "$($env:APPDATA)\Poetry\bin;$env:PATH"
 
       - name: Load cached venv
@@ -83,7 +83,7 @@ jobs:
       - name: Install Poetry
         if: matrix.os == 'windows-latest'
         run: |
-          (Invoke-WebRequest -Uri https://install.python-poetry.org | Invoke-Expression).Close()
+          (Invoke-WebRequest -Uri https://install.python-poetry.org).Content | Invoke-Expression
           $env:PATH = "$($env:APPDATA)\Poetry\bin;$env:PATH"
 
       - name: Load cached venv
@@ -125,7 +125,7 @@ jobs:
       - name: Install Poetry
         if: matrix.os == 'windows-latest'
         run: |
-          (Invoke-WebRequest -Uri https://install.python-poetry.org | Invoke-Expression).Close()
+          (Invoke-WebRequest -Uri https://install.python-poetry.org).Content | Invoke-Expression
           $env:PATH = "$($env:APPDATA)\Poetry\bin;$env:PATH"
 
       - name: Load cached venv
@@ -167,7 +167,7 @@ jobs:
       - name: Install Poetry
         if: matrix.os == 'windows-latest'
         run: |
-          (Invoke-WebRequest -Uri https://install.python-poetry.org | Invoke-Expression).Close()
+          (Invoke-WebRequest -Uri https://install.python-poetry.org).Content | Invoke-Expression
           $env:PATH = "$($env:APPDATA)\Poetry\bin;$env:PATH"
 
       - name: Load cached venv
@@ -212,4 +212,4 @@ jobs:
       - name: Install Poetry
         if: matrix.os == 'windows-latest'
         run: |
-          (Invoke-WebRequest -Uri https://install.python
+          (Invoke-WebRequest -Uri https://install.python-poetry
